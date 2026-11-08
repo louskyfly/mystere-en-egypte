@@ -2526,7 +2526,8 @@ const Docs = (() => {
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
   const SAVE_KEY = "mystere-egypte-v5";
   const TOTAL = 30;
-  const API = (location.protocol === "http:" || location.protocol === "https:") ? "" : null;
+  const STATIC_HOST = /(^|\.)github\.io$/i.test(location.hostname);
+  const API = (location.protocol === "http:" || location.protocol === "https:") && !STATIC_HOST ? "" : null;
 
   /* ---------- état ---------- */
   const newId = () => (crypto.randomUUID ? crypto.randomUUID() : "s-" + Date.now() + "-" + Math.random().toString(16).slice(2));
@@ -4268,7 +4269,7 @@ const Docs = (() => {
             <div><b>${Object.keys(state.docs || {}).length}</b><span>documents consultés</span></div>
             <div><b>${formatTime(Date.now() - state.startedAt)}</b><span>temps d'enquête</span></div>
           </div>
-          <p class="end-note">Le professeur peut suivre ton avancée sur son tableau de bord. Il corrigera ta copie papier.</p>
+          <p class="end-note">${API !== null ? "Le professeur peut suivre ton avancée sur son tableau de bord. Il corrigera ta copie papier." : "Tu peux montrer ton carnet au professeur. Il corrigera ta copie papier."}</p>
         </div>
         <div class="panel-foot">
           <div class="teacher-actions">
