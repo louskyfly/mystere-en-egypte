@@ -3871,7 +3871,7 @@ const Docs = (() => {
   }
 
   /* expose init */
-  if (new URLSearchParams(location.search).has("debug")) {
+  if ((location.hostname === "localhost" || location.hostname === "127.0.0.1") && new URLSearchParams(location.search).has("debug")) {
     window.__M = { openStudy, openDoc, openFinal, openTutorial, openCarnet, renderScene, markSeen, groups: GROUPS, questions: QUESTIONS, scenes: SCENES, state: () => state };
   }
 
