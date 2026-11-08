@@ -19,4 +19,5 @@ Le suivi en temps réel des binômes et le corrigé nécessitent le serveur loca
 - Documents et pictogrammes : captures de l'enquête originale, usage pédagogique.
 - Papyrus d'Hunefer : British Museum / Wikimedia Commons, domaine public.
 - Drapeau : Flagcdn / domaine public.
+- Photo du plateau de Gizeh : Ricardo Liberato, « All Gizah Pyramids », CC BY-SA 2.0, via Wikimedia Commons (recadrée pour la scène).
 - Décors, interface et développement : adaptation 2026.
