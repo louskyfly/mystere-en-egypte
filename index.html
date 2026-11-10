@@ -4479,12 +4479,61 @@ const Docs = (() => {
     return h ? `${h} h ${String(m % 60).padStart(2, "0")}` : `${m} min`;
   }
 
+  /* ---------- accès professeur ---------- */
+  async function readGate() {
+    if (location.protocol === "file:") return { open: true };
+    const ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
+    const timer = ctrl ? setTimeout(() => ctrl.abort(), 2800) : null;
+    const opts = { cache: "no-store", signal: ctrl ? ctrl.signal : undefined };
+    try {
+      if (!STATIC_HOST) {
+        try {
+          const r = await fetch("/api/gate", opts);
+          if (r.ok) return await r.json();
+        } catch {}
+      }
+      const r = await fetch("gate.json?t=" + Date.now(), opts);
+      if (!r.ok) return { open: true };
+      return await r.json();
+    } catch {
+      return { open: true };
+    } finally {
+      if (timer) clearTimeout(timer);
+    }
+  }
+
+  function showGateClosed() {
+    const app = document.getElementById("app");
+    if (app) app.style.display = "none";
+    const layer = document.createElement("div");
+    layer.id = "gateClosed";
+    layer.style.cssText = "position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 35%,#101925 0%,#05080d 68%);color:#f3e9d6;text-align:center;font-family:'Segoe UI',system-ui,sans-serif";
+    layer.innerHTML = `
+      <div style="width:min(520px,100%);padding:38px 30px;border:1px solid rgba(232,180,74,.28);border-radius:18px;background:linear-gradient(180deg,#0d141c,#080c11);box-shadow:0 30px 80px rgba(0,0,0,.55)">
+        <div style="width:74px;height:74px;margin:0 auto 18px;border:1px solid rgba(232,180,74,.45);border-radius:50%;display:grid;place-items:center;color:#e8b44a;font-size:2rem;background:rgba(232,180,74,.06)">&#128274;</div>
+        <p style="margin:0 0 8px;color:#e8b44a;font-size:.7rem;letter-spacing:.26em;text-transform:uppercase">Mystère en Égypte</p>
+        <h1 style="font-family:Georgia,serif;font-weight:400;font-size:2.1rem;margin:0;color:#f6d99a">Séance fermée</h1>
+        <p style="color:#b8ab94;line-height:1.65;font-size:.95rem;margin:14px auto 0;max-width:380px">Le professeur a fermé l’accès au jeu entre deux classes. Reviens quand il ouvrira la séance.</p>
+        <p style="margin-top:18px;color:#8f8574;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase">${new Date().toLocaleString("fr-FR")}</p>
+      </div>`;
+    document.body.appendChild(layer);
+  }
+
+  async function boot() {
+    const gate = await readGate();
+    if (gate && gate.open === false) {
+      showGateClosed();
+      return;
+    }
+    init();
+  }
+
   /* expose init */
   if ((location.hostname === "localhost" || location.hostname === "127.0.0.1") && new URLSearchParams(location.search).has("debug")) {
     window.__M = { openStudy, openDoc, openFinal, openTutorial, openCarnet, renderScene, markSeen, groups: GROUPS, questions: QUESTIONS, scenes: SCENES, audio: Audio, state: () => state };
   }
 
-  window.addEventListener("DOMContentLoaded", init);
+  window.addEventListener("DOMContentLoaded", boot);
 })();
 
 
