@@ -1775,6 +1775,12 @@ const Art = (() => {
     <radialGradient id="ap-engine" cx=".4" cy=".4" r=".7">
       <stop offset="0" stop-color="#6e7378"/><stop offset="1" stop-color="#171b20"/>
     </radialGradient>
+    <linearGradient id="ap-door" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1d4354"/><stop offset=".5" stop-color="#0b202b"/><stop offset="1" stop-color="#071018"/>
+    </linearGradient>
+    <linearGradient id="ap-door-shine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dff6ff" stop-opacity=".18"/><stop offset=".5" stop-color="#dff6ff" stop-opacity=".04"/><stop offset="1" stop-color="#dff6ff" stop-opacity="0"/>
+    </linearGradient>
     <filter id="ap-blur"><feGaussianBlur stdDeviation="7"/></filter>
   `, `
     <rect width="1200" height="675" fill="#07090d"/>
@@ -1831,29 +1837,50 @@ const Art = (() => {
     <g stroke="#e8b44a" stroke-opacity=".08" stroke-width="2"><path d="M760 500V675M890 500V675M1020 500V675M1150 500V675"/></g>
 
     <g font-family="'Segoe UI',Arial,sans-serif">
-      <g>
-        <rect x="740" y="258" width="122" height="96" rx="4" fill="#05070a" stroke="#2a3038"/>
-        <text x="801" y="304" text-anchor="middle" font-size="40" fill="#e8b44a" font-family="Consolas,monospace" letter-spacing="2">E44</text>
-        <text x="801" y="330" text-anchor="middle" font-size="11" letter-spacing="2" fill="#9e9483">PORTE</text>
-        <rect x="750" y="354" width="102" height="156" fill="#12161c" stroke="#232a33"/>
-        <path d="M750 380H852" stroke="#2a323c"/>
-        <text x="801" y="478" text-anchor="middle" font-size="11" fill="#7d8794" letter-spacing="1">12:13</text>
+      <g transform="translate(740 250)">
+        <rect x="0" y="0" width="122" height="92" rx="7" fill="#061019" stroke="#455764" stroke-width="2"/>
+        <path d="M10 8h102" stroke="#e8b44a" stroke-opacity=".55" stroke-width="1.4"/>
+        <text x="61" y="45" text-anchor="middle" font-size="36" fill="#e8b44a" font-family="Consolas,monospace" letter-spacing="2">E44</text>
+        <text x="61" y="63" text-anchor="middle" font-size="8" letter-spacing="2" fill="#94a3ad">PORTE</text>
+        <text x="61" y="80" text-anchor="middle" font-size="9" letter-spacing="1" fill="#6c7f8a">BERLIN · 12:13</text>
+        <rect x="6" y="102" width="110" height="166" rx="5" fill="#0a1117" stroke="#354551" stroke-width="2"/>
+        <rect x="14" y="110" width="94" height="150" rx="3" fill="url(#ap-door)"/>
+        <path d="M61 110v150" stroke="#0a1117" stroke-width="2" opacity=".7"/>
+        <path d="M22 112l24 146M86 112L62 258" stroke="url(#ap-door-shine)" stroke-width="10"/>
+        <rect x="48" y="182" width="4" height="20" rx="2" fill="#e8b44a" opacity=".8"/>
+        <rect x="98" y="122" width="6" height="26" rx="2" fill="#152630" stroke="#3b4b55"/>
+        <circle cx="101" cy="130" r="1.5" fill="#8fbf8a"/>
+        <path d="M14 260h94" stroke="#c58b45" stroke-opacity=".35" stroke-width="2"/>
       </g>
-      <g>
-        <rect x="890" y="258" width="122" height="96" rx="4" fill="#05070a" stroke="#2a3038"/>
-        <text x="951" y="304" text-anchor="middle" font-size="40" fill="#e8b44a" font-family="Consolas,monospace" letter-spacing="2">E45</text>
-        <text x="951" y="330" text-anchor="middle" font-size="11" letter-spacing="2" fill="#9e9483">PORTE</text>
-        <rect x="900" y="354" width="102" height="156" fill="#12161c" stroke="#232a33"/>
-        <path d="M900 380H1002" stroke="#2a323c"/>
-        <text x="951" y="478" text-anchor="middle" font-size="11" fill="#7d8794" letter-spacing="1">12:22</text>
+      <g transform="translate(890 250)">
+        <rect x="0" y="0" width="122" height="92" rx="7" fill="#061019" stroke="#455764" stroke-width="2"/>
+        <path d="M10 8h102" stroke="#e8b44a" stroke-opacity=".55" stroke-width="1.4"/>
+        <text x="61" y="45" text-anchor="middle" font-size="36" fill="#e8b44a" font-family="Consolas,monospace" letter-spacing="2">E45</text>
+        <text x="61" y="63" text-anchor="middle" font-size="8" letter-spacing="2" fill="#94a3ad">PORTE</text>
+        <text x="61" y="80" text-anchor="middle" font-size="9" letter-spacing="1" fill="#6c7f8a">LE CAIRE · 12:22</text>
+        <rect x="6" y="102" width="110" height="166" rx="5" fill="#0a1117" stroke="#354551" stroke-width="2"/>
+        <rect x="14" y="110" width="94" height="150" rx="3" fill="url(#ap-door)"/>
+        <path d="M61 110v150" stroke="#0a1117" stroke-width="2" opacity=".7"/>
+        <path d="M22 112l24 146M86 112L62 258" stroke="url(#ap-door-shine)" stroke-width="10"/>
+        <rect x="48" y="182" width="4" height="20" rx="2" fill="#e8b44a" opacity=".8"/>
+        <rect x="98" y="122" width="6" height="26" rx="2" fill="#152630" stroke="#3b4b55"/>
+        <circle cx="101" cy="130" r="1.5" fill="#8fbf8a"/>
+        <path d="M14 260h94" stroke="#c58b45" stroke-opacity=".55" stroke-width="2"/>
       </g>
-      <g>
-        <rect x="1040" y="258" width="122" height="96" rx="4" fill="#05070a" stroke="#2a3038"/>
-        <text x="1101" y="304" text-anchor="middle" font-size="40" fill="#e8b44a" font-family="Consolas,monospace" letter-spacing="2">E46</text>
-        <text x="1101" y="330" text-anchor="middle" font-size="11" letter-spacing="2" fill="#9e9483">PORTE</text>
-        <rect x="1050" y="354" width="102" height="156" fill="#12161c" stroke="#232a33"/>
-        <path d="M1050 380H1152" stroke="#2a323c"/>
-        <text x="1101" y="478" text-anchor="middle" font-size="11" fill="#7d8794" letter-spacing="1">12:53</text>
+      <g transform="translate(1040 250)">
+        <rect x="0" y="0" width="122" height="92" rx="7" fill="#061019" stroke="#455764" stroke-width="2"/>
+        <path d="M10 8h102" stroke="#e8b44a" stroke-opacity=".55" stroke-width="1.4"/>
+        <text x="61" y="45" text-anchor="middle" font-size="36" fill="#e8b44a" font-family="Consolas,monospace" letter-spacing="2">E46</text>
+        <text x="61" y="63" text-anchor="middle" font-size="8" letter-spacing="2" fill="#94a3ad">PORTE</text>
+        <text x="61" y="80" text-anchor="middle" font-size="9" letter-spacing="1" fill="#6c7f8a">LONDRES · 12:53</text>
+        <rect x="6" y="102" width="110" height="166" rx="5" fill="#0a1117" stroke="#354551" stroke-width="2"/>
+        <rect x="14" y="110" width="94" height="150" rx="3" fill="url(#ap-door)"/>
+        <path d="M61 110v150" stroke="#0a1117" stroke-width="2" opacity=".7"/>
+        <path d="M22 112l24 146M86 112L62 258" stroke="url(#ap-door-shine)" stroke-width="10"/>
+        <rect x="48" y="182" width="4" height="20" rx="2" fill="#e8b44a" opacity=".8"/>
+        <rect x="98" y="122" width="6" height="26" rx="2" fill="#152630" stroke="#3b4b55"/>
+        <circle cx="101" cy="130" r="1.5" fill="#8fbf8a"/>
+        <path d="M14 260h94" stroke="#c58b45" stroke-opacity=".35" stroke-width="2"/>
       </g>
     </g>
 
@@ -3409,9 +3436,9 @@ const Docs = (() => {
       act: 1, chapter: "Acte I — L'envol", place: "Aéroport d'Orléans", time: "11:40",
       art: "airport", objective: "Trouver la porte pour Le Caire",
       hotspots: [
-        { x: 66.7, y: 45, label: "Porte E44", labelAbove: true, action: "gate:E44" },
-        { x: 79.2, y: 45, label: "Porte E45", labelAbove: true, action: "gate:E45" },
-        { x: 91.7, y: 45, label: "Porte E46", labelAbove: true, action: "gate:E46" },
+        { x: 66.7, y: 45, label: "Porte E44", labelAbove: true, hideLabel: true, action: "gate:E44" },
+        { x: 79.2, y: 45, label: "Porte E45", labelAbove: true, hideLabel: true, action: "gate:E45" },
+        { x: 91.7, y: 45, label: "Porte E46", labelAbove: true, hideLabel: true, action: "gate:E46" },
       ]
     },
     plane: {
@@ -3821,7 +3848,7 @@ const Docs = (() => {
         badge = `<span class="qbadge">${unseenReq}</span>`;
       }
       const lock = locked ? `<span class="lock-mark">${LOCK_SVG}</span>` : "";
-      b.innerHTML = `${h.kind === "exit" ? '<span class="exit-arrow">→</span>' : ""}${lock}${badge}<span class="label">${h.label}</span>`;
+      b.innerHTML = `${h.kind === "exit" ? '<span class="exit-arrow">→</span>' : ""}${lock}${badge}${h.hideLabel ? "" : `<span class="label">${h.label}</span>`}`;
       b.addEventListener("click", () => {
         Audio.click();
         handleAction(h);
