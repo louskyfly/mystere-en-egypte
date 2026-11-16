@@ -7,6 +7,8 @@ Jeu HTML5 autonome, jouable sur iPad en paysage.
 
 Ouvrir `index.html` ou la page GitHub Pages du dépôt.
 
+La vidéo de la tablette est diffusée depuis YouTube : une connexion internet est nécessaire pour la lire.
+
 Les élèves font l'enquête **par binôme** : ils entrent leurs deux prénoms et noms au départ, lisent les questions dans le jeu et répondent sur une **copie papier**. Le jeu ne corrige pas les réponses et ne donne aucun indice.
 
 ## Version classe
@@ -20,4 +22,5 @@ Le suivi en temps réel des binômes et le corrigé nécessitent le serveur loca
 - Papyrus d'Hunefer : British Museum / Wikimedia Commons, domaine public.
 - Drapeau : Flagcdn / domaine public.
 - Photo du plateau de Gizeh : Ricardo Liberato, « All Gizah Pyramids », CC BY-SA 2.0, via Wikimedia Commons (recadrée pour la scène).
+- Vidéo de la tablette : « D'où viennent les pierres des pyramides d'Égypte ? », Les essentiels de Jamy, Lumni (YouTube), reprise de l'enquête originale.
 - Décors, interface et développement : adaptation 2026.
