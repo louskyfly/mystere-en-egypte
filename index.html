@@ -65,7 +65,7 @@ input,textarea{font:inherit;color:inherit}
 /* ---------- hotspots ---------- */
 .hotspot{
   position:absolute;z-index:15;transform:translate(-50%,-50%);
-  width:2.6cqw;height:2.6cqw;min-width:26px;min-height:26px;
+  width:4.2cqw;height:4.2cqw;min-width:36px;min-height:36px;
   border-radius:50%;
   display:flex;align-items:center;justify-content:center;
   color:var(--gold);
@@ -78,7 +78,7 @@ input,textarea{font:inherit;color:inherit}
   animation:pulse 2.8s ease-in-out infinite;
 }
 .hotspot::after{
-  content:"";width:.5cqw;height:.5cqw;min-width:3px;min-height:3px;border-radius:50%;
+  content:"";width:.7cqw;height:.7cqw;min-width:4px;min-height:4px;border-radius:50%;
   background:var(--gold);box-shadow:0 0 1cqw rgba(232,180,74,.6)
 }
 .hotspot:hover::before,.hotspot:focus-visible::before{background:rgba(232,180,74,.16);border-color:var(--gold);animation:none}
@@ -88,10 +88,10 @@ input,textarea{font:inherit;color:inherit}
 .hotspot.zone::after{display:none}
 .hotspot.zone:hover::before,.hotspot.zone:focus-visible::before{opacity:.9;background:rgba(232,180,74,.06)}
 .hotspot .label{
-  position:absolute;left:50%;top:calc(100% + .55cqw);transform:translateX(-50%);
-  white-space:nowrap;padding:.35cqw .6cqw;border-radius:.25cqw;
+  position:absolute;left:50%;top:calc(100% + .7cqw);transform:translateX(-50%);
+  white-space:nowrap;padding:.45cqw .75cqw;border-radius:.25cqw;
   background:rgba(5,8,12,.92);border:1px solid rgba(232,180,74,.35);
-  color:var(--ink);font-size:1.05cqw;letter-spacing:.06em;
+  color:var(--ink);font-size:1.5cqw;letter-spacing:.06em;
   opacity:0;pointer-events:none;transition:opacity .18s ease;
 }
 .hotspot:hover .label,.hotspot:focus-visible .label{opacity:1}
@@ -115,8 +115,8 @@ input,textarea{font:inherit;color:inherit}
 .hud-top > *{pointer-events:auto}
 .chapter{max-width:46%}
 .chapter .eyebrow{font-size:.78cqw;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);opacity:.85;margin:0 0 .35cqw}
-.chapter h1{font-family:var(--serif);font-weight:400;font-size:1.65cqw;line-height:1.1;margin:0;color:var(--ink);text-shadow:0 2px 12px #000}
-.chapter p{font-size:.9cqw;color:var(--muted);margin:.35cqw 0 0}
+.chapter h1{font-family:var(--serif);font-weight:400;font-size:1.8cqw;line-height:1.1;margin:0;color:var(--ink);text-shadow:0 2px 12px #000}
+.chapter p{font-size:1cqw;color:var(--muted);margin:.35cqw 0 0}
 .chapter .objective{
   display:inline-flex;align-items:center;gap:.5cqw;margin-top:.7cqw;
   padding:.4cqw .7cqw;border:1px solid rgba(232,180,74,.25);
@@ -164,7 +164,7 @@ input,textarea{font:inherit;color:inherit}
   margin:0 0 .5cqw;display:flex;align-items:center;gap:.6cqw
 }
 .dialogue .who::after{content:"";flex:1;height:1px;background:rgba(232,180,74,.18)}
-.dialogue .text{font-size:1.28cqw;line-height:1.55;color:#eee3cf;margin:0;min-height:3.8cqw;padding-right:2.6cqw}
+.dialogue .text{font-size:1.5cqw;line-height:1.55;color:#eee3cf;margin:0;min-height:3.8cqw;padding-right:2.6cqw}
 .dialogue .text .cursor{display:inline-block;width:.5cqw;height:1.1em;background:var(--gold);vertical-align:-.12em;animation:blink .9s steps(1) infinite;margin-left:.15cqw}
 @keyframes blink{50%{opacity:0}}
 .dialogue .next{
@@ -238,8 +238,8 @@ input,textarea{font:inherit;color:inherit}
 .q-meta{display:flex;align-items:center;gap:.7cqw;flex-wrap:wrap;margin:0 0 .9cqw}
 .q-num{font-family:var(--mono);font-size:.75cqw;letter-spacing:.1em;color:var(--gold);border:1px solid rgba(232,180,74,.3);padding:.25cqw .5cqw;border-radius:.25cqw}
 .q-act{font-size:.72cqw;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
-.q-title{font-family:var(--serif);font-weight:400;font-size:2.2cqw;margin:0 0 .9cqw;color:var(--ink)}
-.q-prompt{font-size:1.28cqw;line-height:1.65;color:#e5d9c4;margin:0 0 1.2cqw}
+.q-title{font-family:var(--serif);font-weight:400;font-size:2.3cqw;margin:0 0 .9cqw;color:var(--ink)}
+.q-prompt{font-size:1.5cqw;line-height:1.65;color:#e5d9c4;margin:0 0 1.2cqw}
 .q-prompt b{color:var(--gold-2)}
 .q-options{display:grid;gap:.55cqw;margin:0 0 1cqw}
 .q-option{
@@ -283,7 +283,7 @@ input,textarea{font:inherit;color:inherit}
 .carnet-row{
   display:grid;grid-template-columns:2.6rem 1fr auto;gap:.6rem;align-items:center;
   width:100%;padding:.55rem .6rem;border:1px solid rgba(255,255,255,.07);border-radius:.3cqw;
-  text-align:left;font-size:.82cqw;color:var(--muted)
+  text-align:left;font-size:.9cqw;color:var(--muted)
 }
 .carnet-row:hover{border-color:rgba(232,180,74,.35);background:rgba(232,180,74,.05)}
 .carnet-row .n{font-family:var(--mono);color:var(--gold);font-size:.72cqw;white-space:nowrap}
@@ -559,21 +559,21 @@ input,textarea{font:inherit;color:inherit}
 .study-doc-head button{font-size:.68cqw;color:var(--gold);letter-spacing:.08em}
 .doc-scroll{overflow:auto;padding:.5cqw;min-height:0;flex:1}
 .doc-scroll .np-body{columns:1}
-.doc-scroll .doc{font-size:.82rem}
-.doc-scroll .doc h2{font-size:1.2rem}
+.doc-scroll .doc{font-size:1rem}
+.doc-scroll .doc h2{font-size:1.35rem}
 .study-questions{overflow:auto;min-height:0;padding-right:.3cqw}
 .study-q{border-bottom:1px solid rgba(255,255,255,.07);padding:.7cqw 0}
 .study-q:last-child{border-bottom:0}
 .study-q.done{background:rgba(143,191,138,.03)}
-.study-q .q-prompt{font-size:1.04cqw;line-height:1.6;margin:0 0 .65cqw}
-.study-q .q-area{min-height:3.4cqw;font-size:.85cqw;padding:.55cqw .7cqw}
-.study-q .q-input.short{height:2.6cqw;font-size:.85cqw;padding:.4cqw .7cqw}
-.study-q .q-option{font-size:.82cqw;padding:.55cqw .7cqw}
+.study-q .q-prompt{font-size:1.35cqw;line-height:1.6;margin:0 0 .65cqw}
+.study-q .q-area{min-height:3.4cqw;font-size:1.02cqw;padding:.55cqw .7cqw}
+.study-q .q-input.short{height:2.6cqw;font-size:1.02cqw;padding:.4cqw .7cqw}
+.study-q .q-option{font-size:1.02cqw;padding:.55cqw .7cqw}
 .study-q .q-tools{display:flex;gap:.4cqw;flex-wrap:wrap;margin:.45cqw 0 0}
-.study-q .q-tools button{font-size:.64cqw;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);border-bottom:1px solid rgba(255,255,255,.12);padding:.1cqw 0}
+.study-q .q-tools button{font-size:.72cqw;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);border-bottom:1px solid rgba(255,255,255,.12);padding:.1cqw 0}
 .study-q .q-tools button:hover{color:var(--gold);border-color:var(--gold)}
-.study-q .hint-box{font-size:.78cqw;margin:.45cqw 0 0;padding:.5cqw .6cqw}
-.study-q .feedback{font-size:.78cqw;margin:.4cqw 0 0}
+.study-q .hint-box{font-size:.88cqw;margin:.45cqw 0 0;padding:.5cqw .6cqw}
+.study-q .feedback{font-size:.88cqw;margin:.4cqw 0 0}
 .done-pill{font-size:.58cqw;letter-spacing:.1em;text-transform:uppercase;color:var(--green);border:1px solid rgba(143,191,138,.35);border-radius:99px;padding:.12cqw .4cqw;margin-left:auto}
 .teacher-answer{display:none;margin:.45cqw 0 0;padding:.45cqw .6cqw;border-left:.15cqw solid var(--gold);background:rgba(232,180,74,.06);font-size:.72cqw;line-height:1.5;color:var(--gold-2)}
 .teacher-answer.show{display:block}
@@ -582,10 +582,11 @@ input,textarea{font:inherit;color:inherit}
 .copy-note{font-size:.78cqw;line-height:1.5;color:var(--gold-2);border-left:.15cqw solid var(--gold);padding:.45cqw .6cqw;background:rgba(232,180,74,.05);margin:0 0 .7cqw}
 .copy-hint{font-size:.7cqw;color:var(--dim);font-style:italic;margin:.35cqw 0 0}
 .study-q.seen{background:rgba(143,191,138,.03)}
-.q-static-options{list-style:upper-alpha;margin:.3cqw 0 .2cqw;padding-left:1.4cqw;color:var(--ink);font-size:.85cqw;line-height:1.55}
+.q-static-options{list-style:upper-alpha;margin:.3cqw 0 .2cqw;padding-left:1.4cqw;color:var(--ink);font-size:.95cqw;line-height:1.55}
 .q-static-options li{margin:.15cqw 0;padding-left:.2cqw}
 .q-static-options li::marker{color:var(--gold);font-family:var(--mono);font-size:.75cqw}
 .doc-img-wrap{margin:.6rem 0;border:1px solid rgba(0,0,0,.16);background:#fff;border-radius:.25rem;overflow:hidden}
+.q-flag{max-width:15rem;margin:.55rem 0 .25rem}
 .doc-img{display:block;max-width:100%;max-height:48vh;width:auto;height:auto;margin:0 auto;cursor:zoom-in}
 .doc-image-page{background:#efe3c8;padding:1.1rem;border:1px solid #b8a37a}
 .doc-dark{background:#0b1118;color:var(--ink);padding:1.1rem;border:1px solid rgba(232,180,74,.2)}
@@ -620,16 +621,16 @@ input,textarea{font:inherit;color:inherit}
 
 /* badges de questions sur les hotspots */
 .qbadge{
-  position:absolute;top:-1.15cqw;right:-1.15cqw;z-index:3;
-  min-width:1.55cqw;height:1.55cqw;padding:0 .28cqw;border-radius:99px;
-  background:#c9473a;color:#fff;font-family:var(--mono);font-size:.78cqw;
+  position:absolute;top:-1.35cqw;right:-1.35cqw;z-index:3;
+  min-width:1.85cqw;height:1.85cqw;padding:0 .32cqw;border-radius:99px;
+  background:#c9473a;color:#fff;font-family:var(--mono);font-size:.92cqw;
   display:grid;place-items:center;border:1px solid rgba(255,255,255,.45);
   box-shadow:0 0 .7cqw rgba(0,0,0,.55);pointer-events:none
 }
-.qbadge.done{background:#3f8a52;border-color:rgba(255,255,255,.35);font-size:.85cqw}
-.hotspot.exit .qbadge{top:-1.05cqw;right:-.9cqw}
-.lock-mark{position:absolute;left:-1.15cqw;top:-1.15cqw;z-index:3;width:1.55cqw;height:1.55cqw;border-radius:50%;background:#0b0f14;border:1px solid #c9473a;display:grid;place-items:center;pointer-events:none}
-.lock-mark svg{width:.9cqw;height:.9cqw;stroke:#c9473a;fill:none;stroke-width:1.6}
+.qbadge.done{background:#3f8a52;border-color:rgba(255,255,255,.35);font-size:1cqw}
+.hotspot.exit .qbadge{top:-1.2cqw;right:-1cqw}
+.lock-mark{position:absolute;left:-1.35cqw;top:-1.35cqw;z-index:3;width:1.85cqw;height:1.85cqw;border-radius:50%;background:#0b0f14;border:1px solid #c9473a;display:grid;place-items:center;pointer-events:none}
+.lock-mark svg{width:1.05cqw;height:1.05cqw;stroke:#c9473a;fill:none;stroke-width:1.6}
 .tablet-card .qbadge{position:static;margin-left:auto;align-self:flex-end;top:auto;right:auto}
 .tablet-card{position:relative}
 .tablet-card .qbadge{position:absolute;top:.5cqw;right:.5cqw}
@@ -639,14 +640,16 @@ input,textarea{font:inherit;color:inherit}
 
 /* ---------- tablette ---------- */
 .tablet-panel{width:min(82cqw,980px)}
-.tablet-intro{font-size:.85cqw;line-height:1.55;color:var(--muted);margin:0 0 1cqw}
+.tablet-intro{font-size:.95cqw;line-height:1.55;color:var(--muted);margin:0 0 1cqw}
 .tablet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.7cqw}
+.phone-grid{grid-template-columns:1fr 1fr}
+.tablet-grid-single{grid-template-columns:1fr}
 .tablet-card{display:flex;flex-direction:column;align-items:flex-start;gap:.35cqw;text-align:left;padding:1cqw;border:1px solid rgba(232,180,74,.25);border-radius:.45cqw;background:rgba(0,0,0,.18);transition:.18s}
 .tablet-card:hover{border-color:var(--gold);background:rgba(232,180,74,.08)}
 .tc-icon{font-size:1.6cqw;color:var(--gold);line-height:1}
-.tablet-card b{font-family:var(--serif);font-weight:400;font-size:1.1cqw}
-.tablet-card span{font-size:.72cqw;color:var(--muted);line-height:1.4}
-.tablet-card em{font-style:normal;font-size:.6cqw;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:.3cqw}
+.tablet-card b{font-family:var(--serif);font-weight:400;font-size:1.2cqw}
+.tablet-card span{font-size:.82cqw;color:var(--muted);line-height:1.4}
+.tablet-card em{font-style:normal;font-size:.7cqw;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:.3cqw}
 .tablet-foot{display:flex;align-items:center;justify-content:space-between;gap:1cqw;margin-top:1.2cqw;padding-top:1cqw;border-top:1px solid rgba(255,255,255,.08)}
 .tablet-foot p{font-size:.78cqw;color:var(--muted);margin:0}
 .tablet-foot .btn[disabled]{opacity:.35;pointer-events:none}
@@ -725,7 +728,7 @@ input,textarea{font:inherit;color:inherit}
 .exit-arrow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:var(--gold);font-size:1.4cqw;text-shadow:0 0 8px #000}
 .hotspot.exit{width:auto;height:auto;max-width:25cqw;padding:.65cqw 1cqw;border:1px solid rgba(232,180,74,.45);border-radius:.45cqw;background:rgba(5,8,12,.84);gap:.4cqw;color:var(--gold)}
 .hotspot.exit::before,.hotspot.exit::after{display:none}
-.hotspot.exit .label{position:static;opacity:1;transform:none;background:none;border:0;padding:0;font-size:1.05cqw;letter-spacing:.07em;white-space:normal;max-width:21.5cqw;text-align:center;line-height:1.3}
+.hotspot.exit .label{position:static;opacity:1;transform:none;background:none;border:0;padding:0;font-size:1.35cqw;letter-spacing:.07em;white-space:normal;max-width:26cqw;text-align:center;line-height:1.3}
 .hotspot.exit .exit-arrow{position:static;transform:none;font-size:.9cqw}
 .hotspot.link::before,.hotspot.link::after{display:none}
 .hotspot.link .label{opacity:1;background:rgba(5,8,12,.72);border-color:rgba(232,180,74,.25)}
@@ -745,19 +748,19 @@ input,textarea{font:inherit;color:inherit}
 @media (pointer:coarse){
   .hotspot.zone .label{opacity:.92;background:rgba(5,8,12,.72);border-color:rgba(232,180,74,.25)}
   .hotspot.zone::before{opacity:.18}
-  .hotspot{width:3.2cqw;height:3.2cqw;min-width:28px;min-height:28px}
+  .hotspot{width:5.2cqw;height:5.2cqw;min-width:40px;min-height:40px}
   .q-input,.q-area,.study-q .q-area,.study-q .q-input.short{font-size:16px !important}
   .key{width:4.2cqw;height:3.5cqw;font-size:1.15cqw}
   .tab{padding:.9cqw .9cqw;font-size:.9cqw}
   .panel-close{width:2.8cqw;height:2.8cqw;font-size:1.4cqw}
   .panel-body,.study-doc,.study-questions,.teacher-body,.doc-scroll{-webkit-overflow-scrolling:touch}
-  .hotspot .label{font-size:1.05cqw;padding:.4cqw .6cqw}
+  .hotspot .label{font-size:1.6cqw;padding:.5cqw .75cqw}
   .icon-btn{padding:.7cqw .9cqw;font-size:.95cqw}
   .icon-btn svg{width:1.45cqw;height:1.45cqw}
   .chapter h1{font-size:1.9cqw}
   .chapter p{font-size:1.05cqw}
   .chapter .objective{font-size:1cqw;padding:.5cqw .8cqw}
-  .dialogue .text{font-size:1.5cqw}
+  .dialogue .text{font-size:1.6cqw}
   .dialogue .who{font-size:.95cqw}
   .dialogue .next{font-size:.95cqw}
   .key{width:4.2cqw;height:3.5cqw;font-size:1.15cqw}
@@ -772,14 +775,15 @@ input,textarea{font:inherit;color:inherit}
   .panel-head h2{font-size:2cqw}
   .panel-head p{font-size:.85cqw}
   .q-title{font-size:2.2cqw}
-  .q-prompt,.study-q .q-prompt{font-size:1.35cqw;line-height:1.55}
+  .q-prompt{font-size:1.6cqw;line-height:1.55}
+  .study-q .q-prompt{font-size:1.55cqw;line-height:1.55}
   .q-option{font-size:1.2cqw}
-  .study-q .q-option{font-size:1.1cqw}
+  .study-q .q-option{font-size:1.15cqw}
   .q-area,.q-input.short,.study-q .q-area,.study-q .q-input.short{font-size:1.15cqw}
   .hint-box,.feedback,.study-q .hint-box,.study-q .feedback{font-size:1.05cqw}
   .teacher-answer{font-size:1cqw}
-  .study-doc .doc{font-size:.88rem}
-  .study-doc .doc h2{font-size:1.25rem}
+  .study-doc .doc{font-size:1.05rem}
+  .study-doc .doc h2{font-size:1.4rem}
   .tablet-card b{font-size:1.3cqw}
   .tablet-card span{font-size:.85cqw}
   .password-side{font-size:1cqw}
@@ -800,10 +804,10 @@ input,textarea{font:inherit;color:inherit}
   .tut-step p{font-size:1cqw}
   .mini-ring{width:1.7cqw;height:1.7cqw}
   .mini-badge{min-width:1.7cqw;height:1.7cqw;font-size:.9cqw}
-  .qbadge{min-width:2.1cqw;height:2.1cqw;font-size:1cqw;top:-1.5cqw;right:-1.5cqw}
-  .hotspot.exit .qbadge{top:-1.3cqw;right:-1.1cqw}
-  .lock-mark{width:2.1cqw;height:2.1cqw;left:-1.5cqw;top:-1.5cqw}
-  .lock-mark svg{width:1.2cqw;height:1.2cqw}
+  .qbadge{min-width:2.4cqw;height:2.4cqw;font-size:1.15cqw;top:-1.7cqw;right:-1.7cqw}
+  .hotspot.exit .qbadge{top:-1.4cqw;right:-1.2cqw}
+  .lock-mark{width:2.4cqw;height:2.4cqw;left:-1.7cqw;top:-1.7cqw}
+  .lock-mark svg{width:1.35cqw;height:1.35cqw}
   .carnet-act > p{font-size:1.15cqw}
   .carnet-row{font-size:1.1cqw;padding:.7cqw .75cqw}
   .carnet-row .n{font-size:1cqw}
@@ -1486,7 +1490,7 @@ const SCENE_TEXT = {
   "tablet": [
     {
       "who": "Eva",
-      "text": "C'est ouvert. Trois dossiers : les pyramides, la construction de Khéops, et des messages."
+      "text": "C'est ouvert. Le dossier des pyramides. La construction et les messages ont dû rester sur son téléphone."
     },
     {
       "who": "Eva",
@@ -1513,6 +1517,10 @@ const SCENE_TEXT = {
     {
       "who": "Eva",
       "text": "Le couloir ascendant. Il fait une chaleur étouffante. Une torche éclaire une inscription."
+    },
+    {
+      "who": "Eva",
+      "text": "Le téléphone du professeur ! Il a dû le laisser tomber ici. La vidéo et les messages sont encore accessibles."
     }
   ],
   "king": [
@@ -3563,10 +3571,11 @@ const Docs = (() => {
     },
     corridor: {
       act: 5, chapter: "Acte V — Le couloir", place: "Pyramide de Khéops — couloir", time: "09:10",
-      art: "corridor", objective: "Avancer vers la chambre du roi",
+      art: "corridor", objective: "Trouver le téléphone du professeur",
       hotspots: [
         { x: 75.6, y: 57.5, label: "L'inscription à l'ankh", action: "doc:ankh" },
-        { x: 82, y: 84, kind: "exit", label: "Continuer vers la chambre du roi", action: "goto:king" }
+        { x: 60, y: 72, label: "Le téléphone du professeur", action: "phone" },
+        { x: 82, y: 84, kind: "exit", label: "Continuer vers la chambre du roi", action: "goto:king", requires: [23, 24, 25, 26], blocked: "Le téléphone du professeur contient encore des indices (Q23 à Q26).", blockedStudy: ["video", "sms"] }
       ]
     },
     king: {
@@ -3611,8 +3620,8 @@ const Docs = (() => {
     { id: "osiris", doc: "osiris", title: "Le mythe d'Osiris", sub: "Isis, Seth et la renaissance", qs: [10, 11, 12, 13] },
     { id: "papyrus", doc: "papyrus", title: "Le jugement d'Hunefer", sub: "Le papyrus du musée", qs: [14, 15, 16] },
     { id: "tabletPhoto", doc: "tabletPhoto", title: "Les pyramides de Gizeh", sub: "Dossier de la tablette", qs: [17] },
-    { id: "video", doc: "video", title: "La construction de Khéops", sub: "Dossier de la tablette", qs: [23, 24, 25] },
-    { id: "sms", doc: "sms", title: "Les messages du professeur", sub: "Dossier de la tablette", qs: [26] },
+    { id: "video", doc: "video", title: "La construction de Khéops", sub: "Téléphone du professeur", qs: [23, 24, 25] },
+    { id: "sms", doc: "sms", title: "Les messages du professeur", sub: "Téléphone du professeur", qs: [26] },
     { id: "guide", doc: "guide", title: "La brochure de Gizeh", sub: "Le guide touristique", qs: [18, 19, 20, 21, 22] },
     { id: "pharaoh", doc: "pharaoh", title: "Pharaon, le pouvoir de contraindre", sub: "Chambre du roi", qs: [27] },
     { id: "sarcophagus", doc: "sarcophagus", title: "Le masque d'or", sub: "Le sarcophage", qs: [28, 29] },
@@ -3621,6 +3630,7 @@ const Docs = (() => {
 
   const groupOf = (qid) => GROUPS.find(g => g.qs.includes(qid));
   const groupById = (id) => GROUPS.find(g => g.id === id);
+  const TABLET_IDS = { tabletPhoto: [17], video: [23, 24, 25], sms: [26] };
 
   /* ---------- helpers ---------- */
   function normalize(s) {
@@ -3838,6 +3848,7 @@ const Docs = (() => {
     let objective = scene.objective || "";
     if (state.scene === "giza" && allSeen([18, 19, 20, 21, 22])) objective = "Entrer dans la pyramide";
     if (state.scene === "museumHall" && allSeen([8, 9, 10, 11, 12, 13, 14, 15, 16])) objective = "Quitter le musée et rentrer à l'hôtel";
+    if (state.scene === "corridor" && allSeen([23, 24, 25, 26])) objective = "Continuer vers la chambre du roi";
     if (state.scene === "king" && allSeen([27, 28, 29])) objective = "Passer dans la chambre de la reine";
     if (state.scene === "queen" && qSeen(26)) objective = "Sortir de la pyramide";
     $("#chObjective").textContent = objective;
@@ -3859,7 +3870,11 @@ const Docs = (() => {
       return { total: g.qs.length, unseen };
     }
     if (h.action === "password") {
-      const ids = [17, 23, 24, 25, 26];
+      const ids = [17];
+      return { total: ids.length, unseen: ids.filter(id => !qSeen(id)).length };
+    }
+    if (h.action === "phone") {
+      const ids = [23, 24, 25, 26];
       return { total: ids.length, unseen: ids.filter(id => !qSeen(id)).length };
     }
     if (h.action === "final") {
@@ -3906,6 +3921,10 @@ const Docs = (() => {
     if (h.requires && !allSeen(h.requires)) {
       Audio.no();
       toast(h.blocked || "Il me reste des questions à lire sur ma copie.", "no");
+      const blocked = Array.isArray(h.blockedStudy)
+        ? h.blockedStudy.find(id => (groupById(id)?.qs || []).some(q => !qSeen(q)))
+        : h.blockedStudy;
+      if (blocked) setTimeout(() => openStudy(blocked), 400);
       return;
     }
     const [kind, arg] = h.action.split(":");
@@ -3915,6 +3934,7 @@ const Docs = (() => {
       case "goto": go(arg); break;
       case "gate": tryGate(arg); break;
       case "password": tryPasswordGate(); break;
+      case "phone": openPhone(); break;
       case "tabletLocked": startDialogue([{ who: "Eva", text: "La tablette est verrouillée. Je trouverai peut-être le code au musée." }]); break;
       case "enterPyramid":
         if (allSeen([18, 19, 20, 21, 22])) go("corridor");
@@ -4088,6 +4108,7 @@ const Docs = (() => {
     const ret = studyReturn;
     studyReturn = null;
     if (ret === "tablet" && state.scene === "hotelReturn") setTimeout(openTablet, 60);
+    if (ret === "phone" && state.scene === "corridor") setTimeout(openPhone, 60);
   }
 
   /* ---------- vidéo : coupe l'ambiance pendant la lecture ---------- */
@@ -4262,6 +4283,7 @@ const Docs = (() => {
       <section class="study-q ${qSeen(qid) ? "seen" : ""}" data-q="${qid}">
         <div class="q-meta"><span class="q-num">Q${q.n}</span><span class="q-act">${q.title}</span>${qSeen(qid) ? '<span class="done-pill">vue</span>' : ""}</div>
         <p class="q-prompt">${q.prompt}</p>
+        ${q.doc === "flag" ? `<div class="doc-img-wrap q-flag"><img class="doc-img" data-zoom src="${ASSETS.flag}" alt="Drapeau de l'Égypte : bandes rouge, blanche et noire."></div>` : ""}
         ${options}
         <p class="copy-hint">Réponds sur ta copie.</p>
       </section>`;
@@ -4378,12 +4400,10 @@ const Docs = (() => {
     state.flags.password = true;
     state.flags.tablet = true;
     state.docs.tabletPhoto = true;
-    state.docs.video = true;
-    state.docs.sms = true;
     save();
     Audio.ok();
     const screen = $(".password-screen");
-    if (screen) screen.innerHTML = `<div class="pw-success"><span>✓</span><h3>Tablette déverrouillée</h3><p>Trois dossiers s'ouvrent : les pyramides, la construction, les messages.</p></div>`;
+    if (screen) screen.innerHTML = `<div class="pw-success"><span>✓</span><h3>Tablette déverrouillée</h3><p>Le dossier des pyramides s'ouvre. Le reste est sur le téléphone du professeur, dans la pyramide.</p></div>`;
     toast("Tablette déverrouillée.", "ok");
     setTimeout(() => { closeModal(); openTablet(); }, 900);
   }
@@ -4391,11 +4411,9 @@ const Docs = (() => {
   /* ---------- tablette déverrouillée ---------- */
   function openTablet() {
     const groups = [
-      { id: "tabletPhoto", title: "Les pyramides", sub: "La photo consultée", icon: "◭" },
-      { id: "video", title: "La construction", sub: "La vidéo et sa transcription", icon: "▶" },
-      { id: "sms", title: "Les messages", sub: "Le SMS du professeur", icon: "✉" }
+      { id: "tabletPhoto", title: "Les pyramides", sub: "La photo consultée", icon: "◭" }
     ];
-    const allTablet = allSeen([17, 23, 24, 25, 26]);
+    const allTablet = allSeen(TABLET_IDS.tabletPhoto);
     openModal(`
       <div class="panel tablet-panel">
         <div class="panel-head">
@@ -4403,20 +4421,21 @@ const Docs = (() => {
           <button class="panel-close" data-close aria-label="Fermer">×</button>
         </div>
         <div class="panel-body">
-          <p class="tablet-intro">Trois dossiers ont été consultés récemment. Ouvre-les pour comprendre où le professeur est parti.</p>
-          <div class="tablet-grid">
-            ${groups.map(g => `<button class="tablet-card" data-group="${g.id}">
-              <span class="tc-icon">${g.icon}</span>
-              ${(({tabletPhoto:[17], video:[23,24,25], sms:[26]}[g.id] || []).filter(id=>!qSeen(id)).length)
-                ? `<span class="qbadge">${({tabletPhoto:[17], video:[23,24,25], sms:[26]}[g.id] || []).filter(id=>!qSeen(id)).length}</span>`
-                : `<span class="qbadge done">✓</span>`}
-              <b>${g.title}</b>
-              <span>${g.sub}</span>
-              <em>${g.id === "tabletPhoto" ? (qSeen(17) ? "vue" : "à voir") : g.id === "video" ? `${[23, 24, 25].filter(qSeen).length}/3` : (qSeen(26) ? "vue" : "à voir")}</em>
-            </button>`).join("")}
+          <p class="tablet-intro">Le dossier photo a été consulté récemment. Ouvre-le pour comprendre où le professeur est parti.</p>
+          <div class="tablet-grid tablet-grid-single">
+            ${groups.map(g => {
+              const unseen = TABLET_IDS[g.id].filter(id => !qSeen(id)).length;
+              return `<button class="tablet-card" data-group="${g.id}">
+                <span class="tc-icon">${g.icon}</span>
+                ${unseen ? `<span class="qbadge">${unseen}</span>` : `<span class="qbadge done">✓</span>`}
+                <b>${g.title}</b>
+                <span>${g.sub}</span>
+                <em>${qSeen(17) ? "vue" : "à voir"}</em>
+              </button>`;
+            }).join("")}
           </div>
           <div class="tablet-foot">
-            <p>${allTablet ? "Les trois dossiers sont consultés. Je peux partir pour Gizeh." : "Il reste des questions à lire dans les dossiers."}</p>
+            <p>${allTablet ? "Le dossier est consulté. Je peux partir pour Gizeh." : "Il reste une question à lire dans le dossier."}</p>
             <button class="btn primary" data-go-giza ${allTablet ? "" : "disabled"}>Partir pour Gizeh</button>
           </div>
         </div>
@@ -4429,6 +4448,48 @@ const Docs = (() => {
     }));
     const gg = $("[data-go-giza]", layer);
     if (gg) gg.addEventListener("click", () => { closeModal(); go("cairo2"); });
+  }
+
+  /* ---------- téléphone retrouvé dans le couloir ---------- */
+  function openPhone() {
+    const groups = [
+      { id: "video", title: "La construction", sub: "La vidéo et sa transcription", icon: "▶" },
+      { id: "sms", title: "Les messages", sub: "Le SMS du professeur", icon: "✉" }
+    ];
+    const allPhone = allSeen([23, 24, 25, 26]);
+    openModal(`
+      <div class="panel tablet-panel">
+        <div class="panel-head">
+          <div><p>Téléphone retrouvé</p><h2>Téléphone du professeur</h2></div>
+          <button class="panel-close" data-close aria-label="Fermer">×</button>
+        </div>
+        <div class="panel-body">
+          <p class="tablet-intro">L'écran est encore allumé. Le professeur a laissé une vidéo et un message dans son téléphone.</p>
+          <div class="tablet-grid phone-grid">
+            ${groups.map(g => {
+              const ids = TABLET_IDS[g.id];
+              const unseen = ids.filter(id => !qSeen(id)).length;
+              return `<button class="tablet-card" data-group="${g.id}">
+                <span class="tc-icon">${g.icon}</span>
+                ${unseen ? `<span class="qbadge">${unseen}</span>` : `<span class="qbadge done">✓</span>`}
+                <b>${g.title}</b>
+                <span>${g.sub}</span>
+                <em>${g.id === "video" ? `${ids.filter(qSeen).length}/3` : (qSeen(26) ? "vue" : "à voir")}</em>
+              </button>`;
+            }).join("")}
+          </div>
+          <div class="tablet-foot">
+            <p>${allPhone ? "Tout est consulté. Je peux continuer." : "Il reste des indices à lire dans le téléphone."}</p>
+            <button class="btn primary" data-close>${allPhone ? "Continuer" : "Fermer"}</button>
+          </div>
+        </div>
+      </div>`);
+    const layer = $("#modal");
+    $$("[data-close]", layer).forEach(b => b.addEventListener("click", closeModal));
+    $$("[data-group]", layer).forEach(b => b.addEventListener("click", () => {
+      studyReturn = "phone";
+      openStudy(b.dataset.group);
+    }));
   }
 
   function openTutorial() {
