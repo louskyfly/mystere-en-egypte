@@ -473,6 +473,8 @@ input,textarea{font:inherit;color:inherit}
 .doc-video .doc-sub{color:var(--muted)}
 .video-frame{background:#000;border:1px solid #2a333d;border-radius:8px;overflow:hidden;margin:0 auto 1rem;max-width:min(100%,122cqh)}
 .doc-video{display:block;width:100%;aspect-ratio:16/9;background:#000;object-fit:cover;border:0;padding:0}
+.video-player{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+.video-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .video-caption{margin:0;padding:.45rem .7rem;background:#05070a;color:var(--dim);font-size:.68rem;letter-spacing:.04em}
 .video-screen{position:relative;aspect-ratio:16/9;background:linear-gradient(180deg,#2a5f8f,#e0b578)}
 .video-pyramid{position:absolute;left:20%;bottom:18%;width:60%;height:55%;background:linear-gradient(135deg,#e0b578,#8a5c34);clip-path:polygon(50% 0,100% 100%,0 100%)}
@@ -2646,7 +2648,7 @@ const Docs = (() => {
     video: () => `
       <article class="doc doc-dark">
         <div class="video-frame">
-          <iframe class="doc-video" src="https://www.youtube-nocookie.com/embed/${VIDEO_YT_ID}?rel=0&amp;hl=fr&amp;cc_lang_pref=fr" title="D'où viennent les pierres des pyramides d'Égypte ? — Les essentiels de Jamy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <div class="video-player" data-video-id="${VIDEO_YT_ID}"><div id="ytVideo"></div></div>
           <p class="video-caption">D'où viennent les pierres des pyramides d'Égypte ? — Les essentiels de Jamy (Lumni).</p>
         </div>
         <h2>La construction de Khéops</h2>
@@ -2774,7 +2776,7 @@ const Docs = (() => {
   /* ---------- audio : ambiances musicales par scène ---------- */
   const Audio = (() => {
     let ctx = null, master = null, comp = null, analyser = null, reverb = null, noiseBuffer = null;
-    let enabled = true, current = null, currentScene = null, pendingScene = "title", step = 0;
+    let enabled = true, ducked = false, current = null, currentScene = null, pendingScene = "title", step = 0;
     let trackEl = null, trackName = null, trackFade = null;
     const TRACK_SCENE = {
       title: "arabian", intro: "arabian", airport: "arabian", plane: "arabian",
@@ -2922,7 +2924,7 @@ const Docs = (() => {
       a.preload = "auto";
       a.volume = 0;
       trackEl = a;
-      const target = enabled ? .55 : 0;
+      const target = enabled && !ducked ? .55 : 0;
       try { a.play().catch(() => {}); } catch {}
       let v = 0;
       trackFade = setInterval(() => {
@@ -2939,7 +2941,7 @@ const Docs = (() => {
         if (!AC) return;
         ctx = new AC();
         master = ctx.createGain();
-        master.gain.value = enabled ? .42 : 0;
+        master.gain.value = enabled && !ducked ? .42 : 0;
         comp = ctx.createDynamicsCompressor();
         comp.threshold.value = -18;
         comp.knee.value = 18;
@@ -3407,19 +3409,45 @@ const Docs = (() => {
     function click() { blip(540, .05, "triangle", .035); }
     function ok() { blip(660, .09); setTimeout(() => blip(880, .14), 90); }
     function no() { blip(180, .16, "sawtooth", .05); }
+    function setMasterLevel(on, fade = .18) {
+      if (!master) return;
+      if (ctx && fade > 0) {
+        const now = ctx.currentTime;
+        try {
+          master.gain.cancelScheduledValues(now);
+          master.gain.setValueAtTime(master.gain.value, now);
+          master.gain.linearRampToValueAtTime(on ? .42 : 0, now + fade);
+          return;
+        } catch {}
+      }
+      master.gain.value = on ? .42 : 0;
+    }
+
+    function duck(on) {
+      ducked = Boolean(on);
+      const audible = enabled && !ducked;
+      setMasterLevel(audible);
+      if (trackEl) {
+        if (trackFade) { clearInterval(trackFade); trackFade = null; }
+        trackEl.volume = audible ? .55 : 0;
+        if (audible) { try { trackEl.play().catch(() => {}); } catch {} }
+      }
+    }
+
     function set(v) {
       enabled = v;
       state.sound = v;
-      if (master) master.gain.value = v ? .42 : 0;
+      const audible = enabled && !ducked;
+      setMasterLevel(audible);
       if (trackEl) {
-        trackEl.volume = v ? .55 : 0;
-        if (v) { try { trackEl.play().catch(() => {}); } catch {} }
+        trackEl.volume = audible ? .55 : 0;
+        if (audible) { try { trackEl.play().catch(() => {}); } catch {} }
       }
       updateSoundBtn();
     }
 
     return {
-      start, setScene, click, ok, no, set,
+      start, setScene, click, ok, no, set, duck,
       get enabled() { return enabled; },
       get contextState() { return ctx ? ctx.state : "none"; },
       get scene() { return currentScene; },
@@ -4062,7 +4090,65 @@ const Docs = (() => {
     if (ret === "tablet" && state.scene === "hotelReturn") setTimeout(openTablet, 60);
   }
 
+  /* ---------- vidéo : coupe l'ambiance pendant la lecture ---------- */
+  let videoPlayer = null;
+  let ytApiPromise = null;
+
+  function destroyVideoPlayer() {
+    const hadPlayer = Boolean(videoPlayer);
+    if (videoPlayer) {
+      try { videoPlayer.destroy(); } catch {}
+      videoPlayer = null;
+    }
+    if (hadPlayer) Audio.duck(false);
+  }
+
+  function loadYouTubeApi() {
+    if (window.YT && window.YT.Player) return Promise.resolve();
+    if (ytApiPromise) return ytApiPromise;
+    ytApiPromise = new Promise(resolve => {
+      const previous = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = function () {
+        if (typeof previous === "function") previous();
+        resolve();
+      };
+      const script = document.createElement("script");
+      script.src = "https://www.youtube.com/iframe_api";
+      script.onerror = () => { ytApiPromise = null; resolve(); };
+      document.head.appendChild(script);
+    });
+    return ytApiPromise;
+  }
+
+  function setupVideoPlayer() {
+    destroyVideoPlayer();
+    const wrap = $("#docLayer .video-player");
+    const host = wrap && wrap.querySelector("#ytVideo");
+    if (!host || !wrap.dataset.videoId) return;
+    const videoId = wrap.dataset.videoId;
+    loadYouTubeApi().then(() => {
+      if (!window.YT || !window.YT.Player || !document.body.contains(host)) return;
+      videoPlayer = new window.YT.Player(host, {
+        videoId,
+        playerVars: {
+          host: "https://www.youtube-nocookie.com",
+          rel: 0,
+          hl: "fr",
+          cc_lang_pref: "fr"
+        },
+        events: {
+          onStateChange: event => {
+            if (!window.YT || !window.YT.PlayerState) return;
+            if (event.data === window.YT.PlayerState.PLAYING) Audio.duck(true);
+            else if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) Audio.duck(false);
+          }
+        }
+      });
+    });
+  }
+
   function openDoc(id) {
+    if (id !== "video") destroyVideoPlayer();
     state.docs[id] = true;
     save();
     const meta = DOC_META[id] || { title: "Document", sub: "" };
@@ -4083,6 +4169,7 @@ const Docs = (() => {
         </div>
       </div>`;
     layer.classList.add("open");
+    if (id === "video") setupVideoPlayer();
     $$("[data-close-doc]", layer).forEach(b => b.addEventListener("click", closeDoc));
     const qb = $("[data-doc-questions]", layer);
     if (qb) qb.addEventListener("click", () => { closeDoc(); openStudy(qb.dataset.docQuestions); });
@@ -4090,6 +4177,7 @@ const Docs = (() => {
   }
 
   function closeDoc() {
+    destroyVideoPlayer();
     const layer = $("#docLayer");
     layer.classList.remove("open");
     layer.innerHTML = "";
